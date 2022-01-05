@@ -9,6 +9,16 @@ public class Player : Mover
     private float colorFade = 1f;
     public bool isAlive = true;
     AudioSource playerAudio;
+    public string playerDirection = "left/right";
+
+    [SerializeField]
+    private Sprite lookingRightSprite;
+    [SerializeField]
+    private Sprite frontSprite;
+    [SerializeField]
+    private Sprite backSprite;
+    [SerializeField]
+    private Weapon playerWeapon;
     protected override void Start()
     {
         base.Start();
@@ -38,7 +48,36 @@ public class Player : Mover
 
         if(isAlive)
         {
+            switch(y)
+            {
+                case -1:
+                    spriteRenderer.sprite=frontSprite;
+                    playerWeapon.transform.position = new Vector3(-0.05f,0.053f,0f);
+                    playerWeapon.GetComponent<SpriteRenderer>().sortingLayerName = "Weapon";
+                    playerDirection = "up";
+                    break;
+                case 1:
+                    spriteRenderer.sprite=backSprite;
+                    playerWeapon.transform.position = new Vector3(-0.05f,0.053f,0f);
+                    playerWeapon.GetComponent<SpriteRenderer>().sortingLayerName = "Actor";
+                    playerDirection = "down";
+                    break;
+                case 0:
+                    if(Mathf.Abs(x)>0)
+                    {
+                        spriteRenderer.sprite=lookingRightSprite;
+                        playerWeapon.transform.position = new Vector3(-0.025f,0.053f,0f);
+                        playerWeapon.GetComponent<SpriteRenderer>().sortingLayerName = "Weapon";
+                        playerDirection = "left/right";
+                    }
+                    break;
+                default:
+                    break;
+            }
+            
             UpdateMoter(new Vector3(x,y,0));
+
+            // Play walking sound
             if(((Mathf.Abs(x)>0)||(Mathf.Abs(y)>0))&&!playerAudio.isPlaying)playerAudio.Play();
         }
 

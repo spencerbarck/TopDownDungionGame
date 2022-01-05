@@ -13668,7 +13668,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -602642805
   m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 1518363075290452430, guid: f5cd13f6495bb844ab5b22fc873adce5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -15225,7 +15225,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16161616, y: 0.16161616}
+    oldSize: {x: 0.16161616, y: 0.15151516}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -15252,6 +15252,10 @@ MonoBehaviour:
   ySpeed: 0.75
   xSpeed: 1
   isAlive: 1
+  lookingRightSprite: {fileID: -4869357254534750094, guid: f5cd13f6495bb844ab5b22fc873adce5, type: 3}
+  frontSprite: {fileID: 4873919324978898756, guid: f5cd13f6495bb844ab5b22fc873adce5, type: 3}
+  backSprite: {fileID: 310630301815266069, guid: f5cd13f6495bb844ab5b22fc873adce5, type: 3}
+  playerWeapon: {fileID: 826544309}
 --- !u!212 &1075456555
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15292,7 +15296,7 @@ SpriteRenderer:
   m_SortingLayerID: 264745279
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -4869357254534750094, guid: f5cd13f6495bb844ab5b22fc873adce5, type: 3}
+  m_Sprite: {fileID: 4873919324978898756, guid: f5cd13f6495bb844ab5b22fc873adce5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
