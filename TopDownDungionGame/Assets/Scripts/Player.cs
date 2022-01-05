@@ -8,12 +8,15 @@ public class Player : Mover
     private Color spriteColor;
     private float colorFade = 1f;
     public bool isAlive = true;
+    AudioSource playerAudio;
     protected override void Start()
     {
         base.Start();
         GameManager.instance.OnHitpointChange();
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteColor = spriteRenderer.color;
+
+        playerAudio = GetComponent<AudioSource>();
     }
     protected override void ReceiveDamage(Damage dmg)
     {
@@ -33,7 +36,11 @@ public class Player : Mover
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
 
-        if(isAlive)UpdateMoter(new Vector3(x,y,0));
+        if(isAlive)
+        {
+            UpdateMoter(new Vector3(x,y,0));
+            if(((Mathf.Abs(x)>0)||(Mathf.Abs(y)>0))&&!playerAudio.isPlaying)playerAudio.Play();
+        }
 
         if(!isAlive)
         {
