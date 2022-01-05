@@ -114,6 +114,7 @@ public class GameManager : MonoBehaviour
     }
     public void OnLevelUp()
     {
+        GetComponent<AudioSource>().Play();
         ShowText("Level Up", 50, Color.magenta, player.transform.position, Vector3.up * 100,1.0f);
         player.OnLevelUp();
     }

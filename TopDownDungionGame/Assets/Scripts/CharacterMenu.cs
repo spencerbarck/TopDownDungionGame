@@ -49,6 +49,7 @@ public class CharacterMenu : MonoBehaviour
     public void OnUpgradeClick()
     {
         if(GameManager.instance.TryUpgradeWeapon())
+            GetComponent<AudioSource>().Play();
             UpdateMenu();
     }
 

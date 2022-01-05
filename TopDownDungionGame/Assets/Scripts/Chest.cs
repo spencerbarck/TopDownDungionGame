@@ -10,6 +10,7 @@ public class Chest : Collectable
     {
         if(!collected)
         {
+            GetComponent<AudioSource>().Play();
             collected = true;
             GetComponent<SpriteRenderer>().sprite = emptyChest;
             GameManager.instance.gold += goldAmount;
