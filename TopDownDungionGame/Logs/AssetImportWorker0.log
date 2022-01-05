@@ -140,3 +140,4 @@ Received Import Request.
 Start importing Assets/Scripts/Boss.cs using Guid(4ac9174489d41f44b9434086df6951c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '58c2aa74ff52514aa399df41f0c07a59') in 0.095994 seconds 
   Import took 0.111699 seconds .
 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
