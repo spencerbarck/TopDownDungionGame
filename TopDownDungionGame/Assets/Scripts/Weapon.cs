@@ -19,6 +19,14 @@ public class Weapon : Collidable
     private float lastSwing;
     private float colorFade;
 
+    //Audio
+    [SerializeField]
+    private AudioSource swingSound;
+    [SerializeField]
+    private AudioSource hitSound;
+    private float hitSoundTimer = 0.2f;
+    private float hitSoundTimerLength = 0.2f;
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -33,6 +41,11 @@ public class Weapon : Collidable
 
     protected override void Update()
     {
+        if(hitSoundTimer<hitSoundTimerLength)
+        {
+            hitSoundTimer+= Time.deltaTime;
+        }
+
         base.Update();
 
         if(Input.GetKeyDown(KeyCode.Space))
@@ -64,6 +77,14 @@ public class Weapon : Collidable
         {
             if(coll.name != "Player")
             {
+                
+                //Play idle sound on loop
+                if(hitSoundTimer>=hitSoundTimerLength)
+                {
+                    hitSoundTimer=0f;
+                    hitSound.Play();
+                }
+
                 Damage dmg = new Damage();
                 
                 dmg.damageAmount = damagePoint[weaponLevel];
@@ -77,6 +98,7 @@ public class Weapon : Collidable
 
     private void Swing()
     {
+        swingSound.Play();
         anim.SetTrigger("Swing");
     }
 
