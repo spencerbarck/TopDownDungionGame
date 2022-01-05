@@ -21,6 +21,10 @@ public class Enemy : Mover
     private BoxCollider2D hitbox;
     private Collider2D[] hits = new Collider2D[10];
 
+    // Audio timer
+    private float idleSoundTimer = 4f;
+    private float idleSoundTimerLength = 4f;
+
     protected override void Start()
     {
         base.Start();
@@ -31,6 +35,15 @@ public class Enemy : Mover
 
     protected void FixedUpdate()
     {
+        //Play idle sound on loop
+        if(idleSoundTimer<idleSoundTimerLength)
+        {
+            idleSoundTimer+= Time.deltaTime;
+        }else if(chasing){
+            idleSoundTimer=0f;
+            GetComponent<AudioSource>().Play();
+        }
+
         //If the player is dead return to guard spot
         if(killedPlayer)
         {
