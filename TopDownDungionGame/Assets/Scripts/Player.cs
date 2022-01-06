@@ -8,7 +8,10 @@ public class Player : Mover
     private Color spriteColor;
     private float colorFade = 1f;
     public bool isAlive = true;
-    AudioSource playerAudio;
+    [SerializeField]
+    private AudioSource playerWalkAudio;
+    [SerializeField]
+    private AudioSource playerDamageAudio;
     public string playerDirection = "left/right";
 
     [SerializeField]
@@ -25,12 +28,12 @@ public class Player : Mover
         GameManager.instance.OnHitpointChange();
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteColor = spriteRenderer.color;
-
-        playerAudio = GetComponent<AudioSource>();
     }
     protected override void ReceiveDamage(Damage dmg)
     {
         if(!isAlive) return;
+
+        playerDamageAudio.Play();
 
         base.ReceiveDamage(dmg);
         GameManager.instance.OnHitpointChange();
@@ -52,17 +55,17 @@ public class Player : Mover
             {
                 case -1:
                     spriteRenderer.sprite=frontSprite;
-                    playerWeapon.transform.position = new Vector3(-0.05f,0.053f,0f);
+                    //playerWeapon.transform.position = new Vector3(-0.05f,0.053f,0f);
                     playerWeapon.GetComponent<SpriteRenderer>().sortingLayerName = "Weapon";
                     playerWeapon.anim.SetTrigger("FacingDown");
-                    playerDirection = "up";
+                    playerDirection = "down";
                     break;
                 case 1:
                     spriteRenderer.sprite=backSprite;
-                    playerWeapon.transform.position = new Vector3(-0.05f,0.053f,0f);
+                    //playerWeapon.transform.position = new Vector3(-0.05f,0.053f,0f);
                     playerWeapon.GetComponent<SpriteRenderer>().sortingLayerName = "Actor";
                     playerWeapon.anim.SetTrigger("FacingUp");
-                    playerDirection = "down";
+                    playerDirection = "up";
                     break;
                 case 0:
                     if(Mathf.Abs(x)>0)
@@ -81,7 +84,7 @@ public class Player : Mover
             UpdateMoter(new Vector3(x,y,0));
 
             // Play walking sound
-            if(((Mathf.Abs(x)>0)||(Mathf.Abs(y)>0))&&!playerAudio.isPlaying)playerAudio.Play();
+            if(((Mathf.Abs(x)>0)||(Mathf.Abs(y)>0))&&!playerWalkAudio.isPlaying)playerWalkAudio.Play();
         }
 
         if(!isAlive)
