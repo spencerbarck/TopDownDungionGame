@@ -77,13 +77,13 @@ public class Weapon : Collidable
         {
             if(coll.name != "Player")
             {
-                
-                //Play idle sound on loop
+                if(!hitSound.isPlaying)hitSound.Play();
+                /*
                 if(hitSoundTimer>=hitSoundTimerLength)
                 {
                     hitSoundTimer=0f;
                     hitSound.Play();
-                }
+                }*/
 
                 Damage dmg = new Damage();
                 

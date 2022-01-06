@@ -12,6 +12,8 @@ public class Portal : Collidable
             return;
 
         Vector3 spawn = GameObject.Find("SpawnPoint").transform.position;
+
+        GameManager.instance.portalSound.Play();
         
         if(coll.gameObject.transform.position == spawn)
             return;

@@ -71,7 +71,7 @@ public class Player : Mover
                     if(Mathf.Abs(x)>0)
                     {
                         spriteRenderer.sprite=lookingRightSprite;
-                        playerWeapon.transform.position = new Vector3(-0.025f,0.053f,0f);
+                        //playerWeapon.transform.position = new Vector3(-0.025f,0.053f,0f);
                         playerWeapon.GetComponent<SpriteRenderer>().sortingLayerName = "Weapon";
                         playerWeapon.anim.SetTrigger("FacingLeftRight");
                         playerDirection = "left/right";

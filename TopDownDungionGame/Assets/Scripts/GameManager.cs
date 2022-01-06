@@ -41,6 +41,9 @@ public class GameManager : MonoBehaviour
     public GameObject menu;
     public Animator deathMenuAnimator;
 
+    public AudioSource levelUpSound;
+    public AudioSource portalSound;
+
     //Logic
     public int gold;
     public int experience;
@@ -114,7 +117,7 @@ public class GameManager : MonoBehaviour
     }
     public void OnLevelUp()
     {
-        GetComponent<AudioSource>().Play();
+        levelUpSound.Play();
         ShowText("Level Up", 50, Color.magenta, player.transform.position, Vector3.up * 100,1.0f);
         player.OnLevelUp();
     }
