@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -179,7 +179,13 @@ public class GameManager : MonoBehaviour
     {
         deathMenuAnimator.SetTrigger("Hide");
         UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
+        deathMenuAnimator.speed=1f;
         player.Respawn();
+    }
+
+    public void ShowRespawnButton()
+    {
+        deathMenuAnimator.speed=1000f;
     }
 
 }
