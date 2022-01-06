@@ -14,7 +14,7 @@ public class Weapon : Collidable
     private SpriteRenderer spriteRenderer;
 
     // Swing
-    private Animator anim;
+    public Animator anim;
     private float cooldown = 0.1f;
     private float lastSwing;
     private float colorFade;

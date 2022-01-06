@@ -13717,6 +13717,7 @@ MonoBehaviour:
   - 6
   - 7
   weaponLevel: 0
+  anim: {fileID: 0}
   swingSound: {fileID: 826544312}
   hitSound: {fileID: 826544313}
 --- !u!61 &826544310
@@ -15252,6 +15253,7 @@ MonoBehaviour:
   ySpeed: 0.75
   xSpeed: 1
   isAlive: 1
+  playerDirection: left/right
   lookingRightSprite: {fileID: -4869357254534750094, guid: f5cd13f6495bb844ab5b22fc873adce5, type: 3}
   frontSprite: {fileID: 4873919324978898756, guid: f5cd13f6495bb844ab5b22fc873adce5, type: 3}
   backSprite: {fileID: 310630301815266069, guid: f5cd13f6495bb844ab5b22fc873adce5, type: 3}

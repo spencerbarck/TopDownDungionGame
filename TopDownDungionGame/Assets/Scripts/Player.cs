@@ -54,12 +54,14 @@ public class Player : Mover
                     spriteRenderer.sprite=frontSprite;
                     playerWeapon.transform.position = new Vector3(-0.05f,0.053f,0f);
                     playerWeapon.GetComponent<SpriteRenderer>().sortingLayerName = "Weapon";
+                    playerWeapon.anim.SetTrigger("FacingDown");
                     playerDirection = "up";
                     break;
                 case 1:
                     spriteRenderer.sprite=backSprite;
                     playerWeapon.transform.position = new Vector3(-0.05f,0.053f,0f);
                     playerWeapon.GetComponent<SpriteRenderer>().sortingLayerName = "Actor";
+                    playerWeapon.anim.SetTrigger("FacingUp");
                     playerDirection = "down";
                     break;
                 case 0:
@@ -68,6 +70,7 @@ public class Player : Mover
                         spriteRenderer.sprite=lookingRightSprite;
                         playerWeapon.transform.position = new Vector3(-0.025f,0.053f,0f);
                         playerWeapon.GetComponent<SpriteRenderer>().sortingLayerName = "Weapon";
+                        playerWeapon.anim.SetTrigger("FacingLeftRight");
                         playerDirection = "left/right";
                     }
                     break;
