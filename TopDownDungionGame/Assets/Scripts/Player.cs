@@ -33,7 +33,7 @@ public class Player : Mover
     {
         if(!isAlive) return;
 
-        playerDamageAudio.Play();
+        if(!playerDamageAudio.isPlaying) playerDamageAudio.Play();
 
         base.ReceiveDamage(dmg);
         GameManager.instance.OnHitpointChange();
