@@ -41,6 +41,7 @@ public class Player : Mover
     protected override void Death()
     {
         isAlive = false;
+        SoundManager.instance.playerDeath.Play();
         GameManager.instance.deathMenuAnimator.SetTrigger("Show");
     }
 
@@ -140,6 +141,8 @@ public class Player : Mover
 
     public void Respawn()
     {
+        SoundManager.instance.playerDeath.Stop();
+
         hitPoints=maxHitPoints;
         isAlive = true;
         lastImmune = Time.time;

@@ -18,4 +18,11 @@ public class Boss : Enemy
             minions[i].position = transform.position + new Vector3(-Mathf.Cos(Time.time * minionsSpeed[i]) * minionDistance, Mathf.Sin(Time.time * minionsSpeed[i])* minionDistance, 0);
         }
     }
+    protected override void Death()
+    {
+        Destroy(gameObject);
+        SoundManager.instance.bossGoblinDeath.Play();
+        GameManager.instance.GrantXp(5);
+        GameManager.instance.ShowText("+" + xpValue+ " xp", 30, Color.magenta, transform.position, Vector3.up * 40,1.0f);
+    }
 }
